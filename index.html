@@ -1,0 +1,71 @@
+<!doctype html>
+<html ng-app='app'>
+    <head>
+        <title>MortgageCalculator</title>
+        <link rel='stylesheet' href='index.css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body ng-controller="HomeController as hCtrl">
+        <div class='container'>
+            <div class='jumbotron text-center' style="margin-top: 2em;">
+                <h1>Mortgage Calculator</h1>
+                <p>A tool to help calculator you calculator your monthly mortgage payment</p>
+            </div>
+            <form>
+                <div class= 'col-md-4'style="background-color: white; border: 1px solid black">
+                    <div class="panel panel-default" style="margin:auto">
+                        <div class="panel-heading">Enter Information</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Principle Amount</label>
+                            <input ng-model="hCtrl.principle" type="text" class="form-control" id="principle" placeholder="Principle Amount">
+                        </div>
+                        <div class="form-group">
+                            <label>Interest Rate</label>
+                            <input ng-model="hCtrl.interest" type="text" class="form-control" id="interest" placeholder="Interest Rate">
+                        </div>
+                        <div class="form-group">
+                            <label>Loan Term</label>
+                            <input ng-model="hCtrl.loanTerm"type="text" class="form-control" id="loanTerm" placeholder="Loan Term">
+                        </div>
+                        <div class="form-group">
+                            <label>Period</label>
+                            <select ng-model= 'hCtrl.period' name = 'period' id='period'>
+                                <option id = 'monthly' value = "12">Monthly</option>
+                                <option id = 'biMonthly' value = "6">Bi-Monthly</option>
+                            </select>
+                        </div>
+                        <div class="panel panel-default form-group">
+                            <div class="panel-footer"> <button id='button' ng-click="hCtrl.click()" class="btn btn-default btn-block">Calculate</button> </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+         <p>
+            <div class='col-md-8'>
+                <div ng-show="hCtrl.done" class="alert alert-info" role="alert">
+                    <div>
+                        <strong>Principle Amount: </strong> {{hCtrl.principle | currency}}
+                    </div>
+                    <div>
+                        <strong>Intrest Rate:  </strong> {{hCtrl.interest}}%
+                    </div>
+                    <div>
+                        <strong>Loan Term: </strong> {{hCtrl.loanTerm}} Years
+                    </div>
+                    <div>
+                        <strong>Period: </strong>Pay {{hCtrl.period}} months out of the year
+                    </div>
+                    <hr />
+                    <div>
+                        <strong>Monthly Payment: </strong> {{hCtrl.monthlyPayment | currency}}
+                    </div>
+                </div>
+            </div>
+         </p>
+         </div>
+         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script><script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+         <script src='index.js'></script>
+    </body>
+</html>
